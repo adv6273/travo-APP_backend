@@ -248,6 +248,142 @@ app.get('/places', async (req,res)=>{
         res.json("error in verifying token");
       }
 } )
+// app.get('/acounts/myAccommodation/new/:id',async  (req,res) =>{
+// app.get('/addingplace/:id',async  (req,res) =>{
+app.get('/places/:id',async  (req,res) =>{
+    // res.json(req.params);
+    const {id}= req.params;
+    res.json(await place.findById(id));
+})
+
+
+// app.put('profile-update/:id', async(req,res)=>{
+//     const id = req.params;
+
+//     const getDetails = await place.findByIdAndUpdate(id,{
+//         // name:req.body.name,
+//         title: req.body.title,
+//         address : req.body.address,
+//         description: req.body.description,
+//         addedphotos : req.body.addedphotos,
+//         perks  : req.body.perks,
+//         extrainfo : req.body.extrainfo,
+//         checkin : req.body.extrainfo,
+//         checkout : req.body.checkout,
+//         maxguest : req.body. maxguest,
+//         price: req.body. price
+        
+//     })
+// })
+
+// app.put('profile-update/:id', async (req, res) => {
+//     const id = req.params.id; // Extract the ID from req.params
+  
+//     try {
+//       const updatedDetails = await place.findByIdAndUpdate(id, {
+//         title: req.body.title,
+//         address: req.body.address,
+//         description: req.body.description,
+//         addedphotos: req.body.addedphotos,
+//         perks: req.body.perks,
+//         extrainfo: req.body.extrainfo,
+//         checkin: req.body.checkin,
+//         checkout: req.body.checkout,
+//         maxguest: req.body.maxguest,
+//         price: req.body.price,
+//       });
+  
+//       // Check if the document was found and updated successfully
+//       if (!updatedDetails) {
+//         return res.status(404).json({ error: "Document not found" });
+//       }
+  
+//       res.status(200).json(updatedDetails);
+//     } catch (error) {
+//       console.error(error);
+//       res.status(500).json({ error: "Internal Server Error" });
+//     }
+//   });
+  
+// const mongoose = require('mongoose');
+// const express = require('express');
+// const place = require('./models/place'); // Import your place model
+
+// const router = express.Router();
+
+// app.put('/profile-update/:id', async (req, res) => {
+//   const { id } = req.params;
+
+//   // Check if ID is valid
+//   if (!mongoose.Types.ObjectId.isValid(id)) {
+//     return res.status(400).json({ error: "Invalid ID" });
+//   }
+
+//   try {
+//     const updatedDetails = await place.findByIdAndUpdate(id, {
+//       title: req.body.title,
+//       address: req.body.address,
+//       description: req.body.description,
+//       addedphotos: req.body.addedphotos,
+//       perks: req.body.perks,
+//       extrainfo: req.body.extrainfo,
+//       checkin: req.body.checkin,
+//       checkout: req.body.checkout,
+//       maxguest: req.body.maxguest,
+//       price: req.body.price,
+//     }, { new: true });
+
+//     // Check if the document was found and updated successfully
+//     if (!updatedDetails) {
+//       return res.status(404).json({ error: "Document not found" });
+//     }
+
+//     res.status(200).json(updatedDetails);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: "Internal Server Error", details: error.message });
+//   }
+// });
+
+app.put('/profile-update/:id', async (req, res) => {
+    const { id } = req.params;
+  
+    // Check if ID is valid
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ error: "Invalid ID" });
+    }
+  
+    try {
+      const updatedDetails = await place.findByIdAndUpdate(id, {
+        title: req.body.title,
+        address: req.body.address,
+        description: req.body.description,
+        addedphotos: req.body.addedphotos,
+        perks: req.body.perks,
+        extrainfo: req.body.extrainfo,
+        checkin: req.body.checkin,
+        checkout: req.body.checkout,
+        maxguest: req.body.maxguest,
+        price: req.body.price,
+      }, { new: true });
+  
+      // Check if the document was found and updated successfully
+      if (!updatedDetails) {
+        return res.status(404).json({ error: "Document not found" });
+      }
+  
+      res.status(200).json(updatedDetails);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal Server Error", details: error.message });
+    }
+  });
+
+// module.exports = router;
+
+
+
+
 
 app.listen(4000,()=>{
     console.log("my app is listening on  port 4000 ")
