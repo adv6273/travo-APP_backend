@@ -46,7 +46,7 @@ app.use(cors({
     origin:'http://localhost:3000'  // IF ANY REQUEST COMING FROM THIS ENDPOINT THEN PLS PASS THAT
 //     // origin:'https://127.0.0.1:5173'
 }));
-const port=4000 || process.env.PORT
+const port= process.env.PORT
 app.get('/test',(req,res)=>{
     console.log("haa");
     res.json("ok tested ha");
@@ -256,7 +256,7 @@ app.post("/addingplace", async (req, res) => {
           });
   
           res.json(newplace);
-          // console.log(newplace);
+          console.log(newplace);
         } catch (err) {
           res.json("error in adding place, please try again");
           console.log("not created new place due to this error ", err);
