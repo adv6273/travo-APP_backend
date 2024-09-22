@@ -43,7 +43,7 @@ app.use('/uploads' , express.static(__dirname + '/uploads'));
 // app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(cors({
     credentials:true,
-    origin:'http://localhost:3000/#'  // IF ANY REQUEST COMING FROM THIS ENDPOINT THEN PLS PASS THAT
+    origin:'https://travo-app-client.vercel.app/'  // IF ANY REQUEST COMING FROM THIS ENDPOINT THEN PLS PASS THAT
 //     // origin:'https://127.0.0.1:5173'
 }));
 const port= process.env.PORT
